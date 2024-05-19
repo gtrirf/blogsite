@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Blog Detail
+{% endblock title %}
+
+{% block content %}
+<style>
+    .posts {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+    }
+
+    .posts h2 {
+        font-size: 24px;
+        color: #333333;
+        margin-bottom: 10px;
+    }
+
+    .posts h3 {
+        font-size: 18px;
+        color: #666666;
+        margin-bottom: 10px;
+    }
+
+    .posts p {
+        font-size: 16px;
+        color: #444444;
+        line-height: 1.5;
+    }
+
+    .edit-delete-buttons {
+        margin-top: 20px;
+    }
+
+    .edit-delete-buttons button {
+        margin-right: 10px;
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .edit-delete-buttons button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="posts">
+    <h2>{{ post.title }}</h2>
+    <h3>{{ post.author }}</h3>
+    <p>{{ post.body }}</p>
+</div>
+
+{% if request.user.is_authenticated and request.user == post.author %}
+    <div class="edit-delete-buttons">
+        <button><a href="{% url 'blogs:post_edit' pk=post.pk %}" style="text-decoration: none; color: inherit;">Edit post</a></button>
+        <button><a href="{% url 'blogs:home' %}" style="text-decoration: none; color: inherit;">home page</a></button>
+        <button><a href="{% url 'blogs:post_delete' post.pk %}" style="text-decoration: none; color: inherit;">Delete post</a></button>
+    </div>
+{% endif %}
+{% endblock content %}

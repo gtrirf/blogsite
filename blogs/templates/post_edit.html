@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit Page
+{% endblock title %}
+
+{% block content %}
+<style>
+    /* Style for the form container */
+    .edit-container {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Style for the form elements */
+    .edit-container input[type="text"],
+    .edit-container textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Style for the submit button */
+    .edit-container input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .edit-container input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<div class="edit-container">
+    <h1>Edit Post</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update">
+    </form>
+</div>
+{% endblock content %}

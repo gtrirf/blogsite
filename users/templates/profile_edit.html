@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   Profile Edit
+{% endblock title %}
+
+{% block content %}
+<style>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        font-family: Arial, sans-serif;
+    }
+
+    .container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .container form {
+        margin-bottom: 20px;
+    }
+
+    .container .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .container .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+    <div class="container">
+        <h1>Profile Edit</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock content %}

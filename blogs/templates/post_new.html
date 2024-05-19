@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    new post
+{% endblock title %}
+
+
+{% block content %}
+<style>
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    font-family: Arial, sans-serif;
+}
+h1{
+    font-family: Arial, sans-serif;
+}
+
+</style>
+   <h1>New post</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </form>
+{% endblock content %}
